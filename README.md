@@ -1,4 +1,12 @@
 ## Mantle Stripe Integration
+
+forked from https://github.com/akasiri/mantle-stripe
+
+Upgraded the stripe sdk and fixed several errors in the well organized component: thank you for creating it!
+
+Up to now I tested authorization and capture, without using the customer services.
+
+
 Moqui component for Stripe. Integrates with Mantle payment processing. Currently supports Auth/Capture/Release/Refund operations along with adding and removing PaymentMethods from Stripe. Interacts with the Stripe API via the Stripe java library. Adapted from the AuthorizeDotNet component https://github.com/moqui/AuthorizeDotNet
 
 To add this component to Moqui just clone this repo into your `runtime/component/` directory.
@@ -10,6 +18,7 @@ To add this component to Moqui just clone this repo into your `runtime/component
     > secretKey="**sk_test_...**"
 
 2. Load the record along with the other configuration data found in `data/`
+    > $ ./gradlew build
     > $ ./gradlew load
 
 3. You're ready to go!

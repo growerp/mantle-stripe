@@ -269,12 +269,14 @@ along with this software (see the LICENSE.md file). If not, see
                         address_zip:postalAddress?.postalCode,
                         address_country:postalAddress?.countryGeoId]"/>
 
-            <!-- TODO dynamic solution to currency? rather than just automatically using 'usd' -->
+            <entity-find-one entity-name="moqui.basic.Uom" value-field="currencyUom" cache="true">
+                <field-map field-name="uomId" from="payment.amountUomId"/>
+            </entity-find-one>
             <set field="transactionInfo" from="[
-                        amount:toPlainString(payment.amount),
-                        currency:'usd']"/>
+                        amount: (payment.amount * 100).longValue(),
+                        currency: currencyUom.abbreviation]"/>
             <if condition="emailContactMech?.infoString"><set field="transactionInfo.receipt_email" from="emailContactMech?.infoString"/></if>
-            <if condition="paymentMethod.gatewayCimId"><set field="transactionInfo.customer" from="paymentMethod.gatewayCimId"/></if>
+            <!--if condition="paymentMethod.gatewayCimId"><set field="transactionInfo.customer" from="paymentMethod.gatewayCimId"/></if-->
         </actions>
     </service>
     <service verb="get" noun="AuthGatewayInfo">
