@@ -1,3 +1,7 @@
+This is the last version which was used in GrowERP V0.9.5
+This repository was then copied to the growerp/moqui/runtime/component/mantle-stripe repository and maintained from there.
+So now from here discontinued
+
 ## Mantle Stripe Integration
 
 forked from https://github.com/akasiri/mantle-stripe
